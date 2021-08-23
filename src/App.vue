@@ -1,41 +1,25 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+    <v-app-bar absolute app clipped-left dark flat>
+      <template v-slot:img="{ props }">
+        <v-img v-bind="props" src="./assets/bg-dbgbyzFR8uI.jpg" gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"></v-img>
+      </template>
+      <v-app-bar-nav-icon @click.stop="isNavigationVisible = !isNavigationVisible"></v-app-bar-nav-icon>
+      <v-toolbar-title>Management</v-toolbar-title>
     </v-app-bar>
+          
+    <v-navigation-drawer app clipped flat left v-model="isNavigationVisible">
+      <v-list nav>
+        <v-list-item link v-for="(item, itemIndex) in items" :key="itemIndex" :to="item.link">
+          <v-list-item-icon>
+            <v-icon v-text="item.icon"></v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.text"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
 
     <v-main>
       <router-view/>
@@ -44,12 +28,21 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
-
+  watch: {
+    $route() {
+      this.isNavigationVisible = false
+    }
+  },
   data: () => ({
-    //
+    isNavigationVisible: false,
+    items: [
+      { text: 'Dashboard', icon: 'mdi-view-dashboard-outline', link: '/'}, 
+      { text: 'Software', icon: 'mdi-apps', link: '/software' },
+      { text: 'Hardware', icon: 'mdi-desktop-classic', link: '/hardware' },
+      { text: 'Order', icon: 'mdi-cart-outline', link: '/order' },
+    ],
   }),
 };
 </script>
