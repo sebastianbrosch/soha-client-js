@@ -46,6 +46,7 @@ export default {
 			{ text: 'Software', icon: 'mdi-apps', link: '/software' },
 			{ text: 'Hardware', icon: 'mdi-desktop-classic', link: '/hardware' },
 			{ text: 'Order', icon: 'mdi-cart-outline', link: '/order' },
+			{ text: 'Users', icon: 'mdi-account-outline', link: '/users' },
 		],
 	}),
 };
