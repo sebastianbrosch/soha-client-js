@@ -25,6 +25,8 @@
 								v-model="hardware.serialnumber"
 								label="Serial Number"
 								required
+								:append-icon="'mdi-barcode-scan'"
+								@click:append="ScanBarcodeSerialNumber"
 							></v-text-field>
 						</v-col>
 						<v-col
@@ -97,13 +99,20 @@
 				</v-container>
 			</v-form>
 		</v-card>
+		<barcode-scanner ref="dlg" title="Dialog" message="Message"></barcode-scanner>
 	</v-container>
 </template>
 
 <script>
 import { createHardware, getHardware, updateHardware } from '../../api/hardware.api';
+import BarcodeScanner from '../../components/BarcodeScanner.vue';
+
 export default {
 	name: 'Hardware',
+
+	components: {
+		BarcodeScanner
+	},
 
 	data: () => ({
 		state: ['active', 'inactive'],
@@ -148,6 +157,13 @@ export default {
 		},
 		cancel () {
 			this.$router.push({ path: '/hardware' });
+		},
+		ScanBarcodeSerialNumber () {
+			this.$refs.dlg.open().then(result => {
+				this.hardware.serialnumber = result.code;
+      }).catch(error => {
+				console.log("Error: ", error);
+			});
 		}
 	}
 }
