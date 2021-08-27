@@ -10,6 +10,12 @@
 			<v-btn icon to="/barcode">
 				<v-icon>mdi-barcode-scan</v-icon>
 			</v-btn>
+			<v-btn icon to="/signin" v-if="!!this.$store.state.token === false">
+				<v-icon>mdi-login</v-icon>
+			</v-btn>
+			<v-btn icon @click="logout()" v-else>
+				<v-icon>mdi-logout</v-icon>
+			</v-btn>
 		</v-app-bar>
 					
 		<v-navigation-drawer app clipped flat left v-model="isNavigationVisible">
@@ -48,6 +54,12 @@ export default {
 			{ text: 'Order', icon: 'mdi-cart-outline', link: '/order' },
 			{ text: 'Users', icon: 'mdi-account-outline', link: '/users' },
 		],
+		loginState: false,
 	}),
+	methods: {
+		logout () {
+			this.$store.dispatch('logout');
+		}
+	},
 };
 </script>

@@ -9,6 +9,8 @@ import HardwareEdit from '../views/Hardware/Edit.vue'
 import UserList from '../views/User/List.vue';
 import UserEdit from '../views/User/Edit.vue';
 import Barcode from '../views/Barcode.vue'
+import SignIn from '../views/SignIn.vue';
+import store from '../store'
 
 Vue.use(VueRouter);
 
@@ -56,7 +58,14 @@ const routes = [
 	{
 		path: '/users',
 		name: 'Users',
-		component: UserList
+		component: UserList,
+		beforeEnter: (to, from, next) => {
+			if (!!store.state.token === false) {
+				next({ name: 'SignIn' });
+			} else {
+				next();
+			}
+		}
 	},
 	{
 		path: '/users/new',
@@ -73,6 +82,11 @@ const routes = [
 		name: 'Barcode',
 		component: Barcode
 	},
+	{
+		path: '/signin',
+		name: 'SignIn',
+		component: SignIn
+	}
 ];
 
 const router = new VueRouter({
