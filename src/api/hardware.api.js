@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://soha.sebastianbrosch.de/api';
+const baseUrl = 'https://soha.sebastianbrosch.de/api';
 
 export async function getHardware(id) {
 	try {

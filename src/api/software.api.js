@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://soha.sebastianbrosch.de/api';
+const baseUrl = 'https://soha.sebastianbrosch.de/api';
 
 export async function getSoftware(id) {
 	try {
@@ -34,9 +34,8 @@ export async function updateSoftware(id, software) {
 
 export async function createSoftware(software) {
 	try {
-		const { data, err_message} = await axios.post(`${baseUrl}/software`, software);
-		console.log(err_message);
-		return data;
+		const { data } = await axios.post(`${baseUrl}/software`, software);
+		return [null, data];
 	} catch (error) {
 		return [error];
 	}

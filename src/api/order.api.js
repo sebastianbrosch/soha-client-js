@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const baseUrl = 'http://soha.sebastianbrosch.de/api';
+const baseUrl = 'https://soha.sebastianbrosch.de/api';
 
 export async function getOrder() {
 	try {
-		const { data } = await axios.get(`${baseUrl}/order`) || [];
+		const { data } = await axios.get(`${baseUrl}/order`);
 		return [null, data];
 	} catch (error) {
 		return [error];
