@@ -53,7 +53,7 @@
 							md="4"
 						>
 							<v-text-field
-								v-model="software.expiredAt"
+								v-model="software.expiresAt"
 								label="Expired At"
 							></v-text-field>
 						</v-col>
@@ -64,6 +64,7 @@
 							<v-select
 								:items="state"
 								v-model="software.state"
+								label="State"
 								required
 							></v-select>
 						</v-col>
@@ -97,12 +98,12 @@ export default {
 		state: ['active', 'inactive'],
 		software: {
 			name: '',
-			licenseType: '',
 			licenseKey: '',
+			licensePassword: '',
 			licenseAmount: 0,
-			state: 'active',
-			expiredAt: null,
 			offlineArchive: null,
+			state: 'active',
+			expiresAt: null,
 		},
 	}),
 
@@ -135,7 +136,7 @@ export default {
 		},
 		cancel () {
 			this.$router.push({ path: '/software' });
-		}
+		},
 	}
 }
 </script>

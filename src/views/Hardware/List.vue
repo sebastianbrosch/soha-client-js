@@ -37,10 +37,10 @@ export default {
 
 	data: () => ({
 		headers: [
-			{ text: 'Name', value: 'name' },
+			{ text: 'Name', value: 'description' },
 			{ text: 'Serial-Number', value: 'serialnumber' },
-			{ text: 'Type', value: 'type' },
-			{ text: 'Purchased', value: 'purchaseDate'},
+			{ text: 'Type', value: 'deviceType' },
+			{ text: 'Purchased', value: 'purchasedAt'},
 			{ text: 'Archive', value: 'offlineArchive' },
 			{ text: 'State', value: 'state' },
 			{ value: 'actions', sortable: false, align: 'end' },

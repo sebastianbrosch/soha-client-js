@@ -12,8 +12,8 @@
 							md="4"
 						>
 							<v-text-field
-								v-model="hardware.name"
-								label="Name"
+								v-model="hardware.description"
+								label="Description"
 								required
 							></v-text-field>
 						</v-col>
@@ -35,7 +35,7 @@
 						>
 							<v-select
 								:items="type"
-								v-model="hardware.type"
+								v-model="hardware.deviceType"
 								label="Type"
 								required
 							></v-select>
@@ -47,8 +47,8 @@
 							md="4"
 						>
 							<v-text-field
-								v-model="hardware.purchaseDate"
-								label="Purchase Date"
+								v-model="hardware.purchasedAt"
+								label="Purchased At"
 							></v-text-field>
 						</v-col>
 						<v-col
@@ -56,7 +56,7 @@
 							md="4"
 						>
 							<v-text-field
-								v-model="hardware.warrantyDate"
+								v-model="hardware.warrantyAt"
 								label="Warranty Date"
 							></v-text-field>
 						</v-col>
@@ -115,14 +115,14 @@ export default {
 	},
 
 	data: () => ({
-		state: ['active', 'inactive'],
-		type: ['Computer', 'Laptop', 'Printer', 'Switch', 'Server', 'Other'],
+		state: ['active', 'inactive', 'spare'],
+		type: ['Notebook', 'Router', 'Switch', 'Printer', 'Monitor', 'Computer'],
 		hardware: {
-			name: '',
+			description: '',
 			serialnumber: '',
-			type: '',
-			purchaseDate: null,
-			warrantyDate: null,
+			deviceType: '',
+			purchasedAt: null,
+			warrantyAt: null,
 			state: 'active',
 			offlineArchive: null,
 		},
