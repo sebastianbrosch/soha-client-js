@@ -100,18 +100,43 @@
 			</v-form>
 		</v-card>
 		<barcode-scanner ref="dlg" title="Dialog" message="Message"></barcode-scanner>
+			<v-tabs
+			color="deep-purple accent-4"
+			v-if="!!this.$route.params.id"
+		>
+			<v-tab>Comments</v-tab>
+			<v-tab>Users</v-tab>
+			<v-tab>Files</v-tab>
+			<v-tab>Documents</v-tab>
+			<v-tab-item>
+				<Comments :id="this.$route.params.id" type="hardware"></Comments>
+			</v-tab-item>
+			<v-tab-item>
+
+			</v-tab-item>
+			<v-tab-item>
+				<Files :id="this.$route.params.id" type="hardware"></Files>
+			</v-tab-item>
+			<v-tab-item>
+
+			</v-tab-item>
+		</v-tabs>
 	</v-container>
 </template>
 
 <script>
 import { createHardware, getHardware, updateHardware } from '../../api/hardware.api';
 import BarcodeScanner from '../../components/BarcodeScanner.vue';
+import Comments from '../../components/Comments.vue';
+import Files from '../../components/Files.vue';
 
 export default {
 	name: 'Hardware',
 
 	components: {
-		BarcodeScanner
+		BarcodeScanner,
+		Comments,
+		Files
 	},
 
 	data: () => ({
@@ -161,7 +186,7 @@ export default {
 		ScanBarcodeSerialNumber () {
 			this.$refs.dlg.open().then(result => {
 				this.hardware.serialnumber = result.code;
-      }).catch(error => {
+			}).catch(error => {
 				console.log("Error: ", error);
 			});
 		}

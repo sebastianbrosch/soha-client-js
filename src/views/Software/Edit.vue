@@ -54,7 +54,7 @@
 						>
 							<v-text-field
 								v-model="software.expiresAt"
-								label="Expired At"
+								label="Expires At"
 							></v-text-field>
 						</v-col>
 						<v-col
@@ -85,14 +85,44 @@
 				</v-container>
 			</v-form>
 		</v-card>
+		<v-tabs
+			class="mt-4"
+			color="deep-purple accent-4"
+			v-if="!!this.$route.params.id"
+		>
+			<v-tab>Comments</v-tab>
+			<v-tab>Users</v-tab>
+			<v-tab>Files</v-tab>
+			<v-tab>Documents</v-tab>
+		
+			<v-tab-item>
+				<Comments :id="this.$route.params.id" type="software"></Comments>
+			</v-tab-item>
+			<v-tab-item>
+
+			</v-tab-item>
+			<v-tab-item>
+				<Files :id="this.$route.params.id" type="software"></Files>
+			</v-tab-item>
+			<v-tab-item>
+				
+			</v-tab-item>
+		</v-tabs>
 	</v-container>
 </template>
 
 <script>
 import { createSoftware, getSoftware, updateSoftware } from '../../api/software.api';
+import Comments from '../../components/Comments.vue';
+import Files from '../../components/Files.vue';
 
 export default {
 	name: 'Software',
+
+	components: {
+		Comments,
+		Files
+	},
 
 	data: () => ({
 		state: ['active', 'inactive'],
@@ -114,18 +144,21 @@ export default {
 	},
 
 	async created () {
-		if (this.$route.params.id) {
-			const [error, data] = await getSoftware(this.$route.params.id);
-
-			if (error) {
-				console.log(error);
-			} else {
-				this.software = data;
-			}
-		}
+		this.loadSoftwareItems();
 	},
 
 	methods: {
+		async loadSoftwareItems () {
+			if (this.$route.params.id) {
+				const [error, data] = await getSoftware(this.$route.params.id);
+	
+				if (error) {
+					console.log(error);
+				} else {
+					this.software = data;
+				}
+			}
+		},
 		async save () {
 			if (this.$route.params.id) {
 				await updateSoftware(this.software.id, this.software);
