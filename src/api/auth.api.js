@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://soha.sebastianbrosch.de/api';
+const baseUrl = process.env.VUE_APP_API_BASE_URL;
 
 export async function signin(credentials) {
 	try {
