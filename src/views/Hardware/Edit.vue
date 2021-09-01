@@ -1,93 +1,40 @@
 <template>
 	<v-container>
-<v-card flat>
+		<v-card flat>
 			<v-card-title>
 				{{ title }}
 			</v-card-title>
 			<v-form>
 				<v-container>
 					<v-row>
-						<v-col
-							cols="12"
-							md="4"
-						>
-							<v-text-field
-								v-model="hardware.description"
-								label="Description"
-								required
-							></v-text-field>
+						<v-col cols="12" md="4">
+							<v-text-field v-model="hardware.description" label="Description" required></v-text-field>
 						</v-col>
-						<v-col
-							cols="12"
-							md="4"
-						>
-							<v-text-field
-								v-model="hardware.serialnumber"
-								label="Serial Number"
-								required
-								:append-icon="'mdi-barcode-scan'"
-								@click:append="ScanBarcodeSerialNumber"
-							></v-text-field>
+						<v-col cols="12" md="4">
+							<v-text-field v-model="hardware.serialnumber" label="Serial Number" required :append-icon="'mdi-barcode-scan'" @click:append="ScanBarcodeSerialNumber"></v-text-field>
 						</v-col>
-						<v-col
-							cols="12"
-							md="4"
-						>
-							<v-select
-								:items="type"
-								v-model="hardware.deviceType"
-								label="Type"
-								required
-							></v-select>
+						<v-col cols="12" md="4">
+							<v-select :items="type" v-model="hardware.deviceType" label="Type" required></v-select>
 						</v-col>
 					</v-row>
 					<v-row>
-						<v-col
-							cols="12"
-							md="4"
-						>
-							<v-text-field
-								v-model="hardware.purchasedAt"
-								label="Purchased At"
-							></v-text-field>
+						<v-col cols="12" md="4">
+							<v-text-field v-model="hardware.purchasedAt" label="Purchased At"></v-text-field>
 						</v-col>
-						<v-col
-							cols="12"
-							md="4"
-						>
-							<v-text-field
-								v-model="hardware.warrantyAt"
-								label="Warranty Date"
-							></v-text-field>
+						<v-col cols="12" md="4">
+							<v-text-field v-model="hardware.warrantyAt" label="Warranty Date"></v-text-field>
 						</v-col>
-						<v-col
-							cols="12"
-							md="4"
-						>
-							<v-select
-								:items="state"
-								v-model="hardware.state"
-								label="State"
-								required
-							></v-select>
+						<v-col cols="12" md="4">
+							<v-select :items="state" v-model="hardware.state" label="State" required></v-select>
 						</v-col>
 					</v-row>
 					<v-row>
-						<v-col
-							cols="12"
-							md="4"
-						>
-							<v-text-field
-								v-model="hardware.offlineArchive"
-								label="Offline Archive"
-							></v-text-field>
+						<v-col cols="12" md="4">
+							<v-text-field v-model="hardware.offlineArchive" label="Offline Archive"></v-text-field>
 						</v-col>
 					</v-row>
 					<v-row>
-						<v-col
-							cols="12"
-							md="12"
-						>
+						<v-col cols="12" md="12">
 							<v-btn class="success mr-2" @click="save">
 								Save
 							</v-btn>
@@ -100,10 +47,7 @@
 			</v-form>
 		</v-card>
 		<barcode-scanner ref="dlg" title="Dialog" message="Message"></barcode-scanner>
-			<v-tabs
-			color="deep-purple accent-4"
-			v-if="!!this.$route.params.id"
-		>
+		<v-tabs class="mt-4" color="deep-purple accent-4" v-if="!!this.$route.params.id">
 			<v-tab>Comments</v-tab>
 			<v-tab>Users</v-tab>
 			<v-tab>Files</v-tab>
@@ -147,7 +91,7 @@ export default {
 
 	data: () => ({
 		state: ['active', 'inactive', 'spare', 'corrupted'],
-		type: ['Notebook', 'Router', 'Switch', 'Printer', 'Monitor', 'Computer', 'Hard Disk - External', 'Hard Disk - Internal'],
+		type: ['Notebook', 'Router', 'Switch', 'Printer', 'Monitor', 'Computer', 'Hard Disk - External', 'Hard Disk - Internal', 'IP telephone'],
 		hardware: {
 			description: '',
 			serialnumber: '',

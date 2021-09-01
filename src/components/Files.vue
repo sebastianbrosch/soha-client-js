@@ -27,7 +27,7 @@
 
 <script>
 import { createHardwareFile, deleteHardwareFile, getHardwareFiles } from '../api/hardware.api';
-import { getSoftwareFiles, createSoftwareFile, deleteSoftwareFile } from '../api/software.api';
+import { createSoftwareFile, deleteSoftwareFile, getSoftwareFiles } from '../api/software.api';
 
 export default {
 	name: 'Files',
@@ -95,7 +95,7 @@ export default {
 				this.files = data;
 			}
 		},
-		async saveFile() {
+		async saveFile () {
 			const formData = new FormData();
 
 			if (this.file) {

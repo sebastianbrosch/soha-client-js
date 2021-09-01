@@ -30,7 +30,7 @@
 				persistent-hint
 			></v-select>
 			<v-file-input v-model="document" accept=".pdf"></v-file-input>
-			<v-btn color="success" @click="saveDocument"><v-icon left>mdi-content-save-outline</v-icon>Save</v-btn>
+			<v-btn color="success" @click="saveDocument">Save</v-btn>
 		</form>
 	</v-container>
 </template>
