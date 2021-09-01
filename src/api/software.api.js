@@ -92,3 +92,29 @@ export async function createSoftwareFile(softwareId, file) {
 		return [error];
 	}
 }
+
+export async function getSoftwareDocuments(id) {
+	try {
+		const { data } = await axios.get(`${baseUrl}/software/${id}/documents`);
+		return [null, data];
+	} catch (error) {
+		return [null];
+	}
+}
+
+export async function deleteSoftwareDocument(softwareId, documentId) {
+	try {
+		await axios.delete(`${baseUrl}/software/${softwareId}/documents/${documentId}`);
+	} catch (error) {
+		return [error];
+	}
+}
+
+export async function createSoftwareDocument(softwareId, document) {
+	try {
+		const { data } = await axios.post(`${baseUrl}/software/${softwareId}/documents`, document);
+		return [null, data];
+	} catch (error) {
+		return [null];
+	}
+}

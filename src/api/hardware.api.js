@@ -91,3 +91,29 @@ export async function createHardwareFile(hardwareId, file) {
 		return [error];
 	}
 }
+
+export async function getHardwareDocuments(id) {
+	try {
+		const { data } = await axios.get(`${baseUrl}/hardware/${id}/documents`);
+		return [null, data];
+	} catch (error) {
+		return [error];
+	}
+}
+
+export async function deleteHardwareDocument(hardwareId, documentId) {
+	try {
+		await axios.delete(`${baseUrl}/hardware/${hardwareId}/documents/${documentId}`);
+	} catch (error) {
+		return [error];
+	}
+}
+
+export async function createHardwareDocument(hardwareId, document) {
+	try {
+		const { data } = await axios.post(`${baseUrl}/hardware/${hardwareId}/documents`, document);
+		return [null, data];
+	} catch (error) {
+		return [error];
+	}
+}

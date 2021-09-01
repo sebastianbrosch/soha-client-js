@@ -105,7 +105,7 @@
 				<Files :id="this.$route.params.id" type="software"></Files>
 			</v-tab-item>
 			<v-tab-item>
-				
+				<Documents :id="this.$route.params.id" type="software"></Documents>
 			</v-tab-item>
 		</v-tabs>
 	</v-container>
@@ -115,13 +115,15 @@
 import { createSoftware, getSoftware, updateSoftware } from '../../api/software.api';
 import Comments from '../../components/Comments.vue';
 import Files from '../../components/Files.vue';
+import Documents from '../../components/Documents.vue';
 
 export default {
 	name: 'Software',
 
 	components: {
 		Comments,
-		Files
+		Files,
+		Documents
 	},
 
 	data: () => ({

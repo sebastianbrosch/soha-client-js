@@ -108,6 +108,7 @@
 			<v-tab>Users</v-tab>
 			<v-tab>Files</v-tab>
 			<v-tab>Documents</v-tab>
+			<v-tab>Barcodes</v-tab>
 			<v-tab-item>
 				<Comments :id="this.$route.params.id" type="hardware"></Comments>
 			</v-tab-item>
@@ -116,6 +117,9 @@
 			</v-tab-item>
 			<v-tab-item>
 				<Files :id="this.$route.params.id" type="hardware"></Files>
+			</v-tab-item>
+			<v-tab-item>
+				<Documents :id="this.$route.params.id" type="hardware"></Documents>
 			</v-tab-item>
 			<v-tab-item>
 
@@ -129,6 +133,7 @@ import { createHardware, getHardware, updateHardware } from '../../api/hardware.
 import BarcodeScanner from '../../components/BarcodeScanner.vue';
 import Comments from '../../components/Comments.vue';
 import Files from '../../components/Files.vue';
+import Documents from '../../components/Documents.vue';
 
 export default {
 	name: 'Hardware',
@@ -136,12 +141,13 @@ export default {
 	components: {
 		BarcodeScanner,
 		Comments,
-		Files
+		Files,
+		Documents
 	},
 
 	data: () => ({
-		state: ['active', 'inactive', 'spare'],
-		type: ['Notebook', 'Router', 'Switch', 'Printer', 'Monitor', 'Computer'],
+		state: ['active', 'inactive', 'spare', 'corrupted'],
+		type: ['Notebook', 'Router', 'Switch', 'Printer', 'Monitor', 'Computer', 'Hard Disk - External', 'Hard Disk - Internal'],
 		hardware: {
 			description: '',
 			serialnumber: '',
