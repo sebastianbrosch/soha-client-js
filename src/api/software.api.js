@@ -86,7 +86,11 @@ export async function deleteSoftwareFile(softwareId, fileId) {
 
 export async function createSoftwareFile(softwareId, file) {
 	try {
-		const { data } = await axios.post(`${baseUrl}/software/${softwareId}/files`, file);
+		const { data } = await axios.post(`${baseUrl}/software/${softwareId}/files`, file, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		});
 		return [null, data];
 	} catch (error) {
 		return [error];
@@ -112,7 +116,11 @@ export async function deleteSoftwareDocument(softwareId, documentId) {
 
 export async function createSoftwareDocument(softwareId, document) {
 	try {
-		const { data } = await axios.post(`${baseUrl}/software/${softwareId}/documents`, document);
+		const { data } = await axios.post(`${baseUrl}/software/${softwareId}/documents`, document, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		});
 		return [null, data];
 	} catch (error) {
 		return [null];

@@ -85,7 +85,11 @@ export async function deleteHardwareFile(hardwareId, fileId) {
 
 export async function createHardwareFile(hardwareId, file) {
 	try {
-		const { data } = await axios.post(`${baseUrl}/hardware/${hardwareId}/files`, file);
+		const { data } = await axios.post(`${baseUrl}/hardware/${hardwareId}/files`, file, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		});
 		return [null, data];
 	} catch (error) {
 		return [error];
@@ -111,7 +115,11 @@ export async function deleteHardwareDocument(hardwareId, documentId) {
 
 export async function createHardwareDocument(hardwareId, document) {
 	try {
-		const { data } = await axios.post(`${baseUrl}/hardware/${hardwareId}/documents`, document);
+		const { data } = await axios.post(`${baseUrl}/hardware/${hardwareId}/documents`, document, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		});
 		return [null, data];
 	} catch (error) {
 		return [error];
