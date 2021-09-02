@@ -66,7 +66,7 @@
 				<Documents :id="this.$route.params.id" type="hardware"></Documents>
 			</v-tab-item>
 			<v-tab-item>
-
+				<Barcodes :id="this.$route.params.id" type="hardware"></Barcodes>
 			</v-tab-item>
 		</v-tabs>
 	</v-container>
@@ -78,6 +78,7 @@ import BarcodeScanner from '../../components/BarcodeScanner.vue';
 import Comments from '../../components/Comments.vue';
 import Files from '../../components/Files.vue';
 import Documents from '../../components/Documents.vue';
+import Barcodes from '../../components/Barcodes.vue';
 
 export default {
 	name: 'Hardware',
@@ -86,7 +87,8 @@ export default {
 		BarcodeScanner,
 		Comments,
 		Files,
-		Documents
+		Documents,
+		Barcodes
 	},
 
 	data: () => ({

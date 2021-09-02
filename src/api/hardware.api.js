@@ -125,3 +125,29 @@ export async function createHardwareDocument(hardwareId, document) {
 		return [error];
 	}
 }
+
+export async function getHardwareBarcodes(id) {
+	try {
+		const { data } = await axios.get(`${baseUrl}/hardware/${id}/barcodes`);
+		return [null, data];
+	} catch (error) {
+		return [error];
+	}
+}
+
+export async function deleteHardwareBarcode(hardwareId, barcodeId) {
+	try {
+		await axios.delete(`${baseUrl}/hardware/${hardwareId}/barcodes/${barcodeId}`);
+	} catch (error) {
+		return [error];
+	}
+}
+
+export async function createHardwareBarcode(hardwareId, barcode) {
+	try {
+		const { data } = await axios.post(`${baseUrl}/hardware/${hardwareId}/barcodes`, barcode);
+		return [null, data];
+	} catch (error) {
+		return [error];
+	}
+}
