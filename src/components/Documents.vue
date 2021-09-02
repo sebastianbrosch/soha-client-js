@@ -16,7 +16,7 @@
 					<v-icon	>mdi-file-eye-outline</v-icon>
 				</v-btn>
 				<v-btn icon @click="deleteDocument(item)">
-					<v-icon >mdi-delete-outline</v-icon>
+					<v-icon>mdi-delete-outline</v-icon>
 				</v-btn>
 			</template>
 		</v-data-table>

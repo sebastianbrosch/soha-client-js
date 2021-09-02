@@ -15,7 +15,7 @@
 					<v-list-item-title v-if="comment.User" class="text--secondary subtitle-2">
 						{{ comment.User.firstname }} {{ comment.User.lastname }} am {{ GetFormattedDate(comment.createdAt) }}
 						<v-btn icon @click="deleteComment(comment)">
-							<v-icon >mdi-delete-outline</v-icon>
+							<v-icon>mdi-delete-outline</v-icon>
 						</v-btn>
 					</v-list-item-title>
 					<v-list-item-title v-else class="text--secondary subtitle-2">

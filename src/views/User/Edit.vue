@@ -7,57 +7,23 @@
 			<v-form>
 				<v-container>
 					<v-row>
-						<v-col
-							cols="12"
-							md="6"
-						>
-							<v-text-field
-								v-model="user.email"
-								label="E-Mail"
-								required
-							></v-text-field>
+						<v-col cols="12" md="6">
+							<v-text-field v-model="user.email" label="E-Mail" required></v-text-field>
 						</v-col>
-						<v-col
-							cols="12"
-							md="6"
-						>
-							<v-text-field
-								v-model="user.password"
-								label="Password"
-								:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-								:type="showPassword ? 'text' : 'password'"
-								@click:append="showPassword = !showPassword"
-								required
-							></v-text-field>
+						<v-col cols="12" md="6">
+							<v-text-field v-model="user.password" label="Password" :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" :type="showPassword ? 'text' : 'password'" @click:append="showPassword = !showPassword" required></v-text-field>
 						</v-col>
 					</v-row>
 					<v-row>
-						<v-col
-							cols="12"
-							md="6"
-						>
-							<v-text-field
-								v-model="user.firstname"
-								label="Firstname"
-								required
-							></v-text-field>
+						<v-col cols="12" md="6">
+							<v-text-field v-model="user.firstname" label="Firstname" required></v-text-field>
 						</v-col>
-						<v-col
-							cols="12"
-							md="6"
-						>
-							<v-text-field
-								v-model="user.lastname"
-								label="Lastname"
-								required
-							></v-text-field>
+						<v-col cols="12" md="6">
+							<v-text-field v-model="user.lastname" label="Lastname" required></v-text-field>
 						</v-col>
 					</v-row>
 					<v-row>
-						<v-col
-							cols="12"
-							md="12"
-						>
+						<v-col cols="12" md="12">
 							<v-btn class="success mr-2" @click="save">
 								Save
 							</v-btn>

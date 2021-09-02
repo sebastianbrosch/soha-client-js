@@ -13,7 +13,7 @@
 						<v-icon	>mdi-file-download-outline</v-icon>
 					</v-btn>
 					<v-btn icon @click="deleteFile(item)">
-						<v-icon >mdi-delete-outline</v-icon>
+						<v-icon>mdi-delete-outline</v-icon>
 					</v-btn>
 		</template>
 		</v-data-table>
