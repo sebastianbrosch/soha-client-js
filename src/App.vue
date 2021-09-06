@@ -10,6 +10,7 @@
 			<v-btn icon to="/barcode">
 				<v-icon>mdi-barcode-scan</v-icon>
 			</v-btn>
+			<v-btn text :to="`/profile/${this.getUser.id}`" v-if="!!this.$store.state.token">Hey, {{ this.getUser.firstname + ' ' + this.getUser.lastname}}</v-btn>
 			<v-btn icon to="/signin" v-if="!!this.$store.state.token === false">
 				<v-icon>mdi-login</v-icon>
 			</v-btn>
@@ -45,6 +46,11 @@ export default {
 			this.isNavigationVisible = false
 		}
 	},
+	computed: {
+		getUser () {
+			return this.$store.state.user;
+		}
+	},
 	data: () => ({
 		isNavigationVisible: false,
 		items: [
@@ -52,6 +58,7 @@ export default {
 			{ text: 'Software', icon: 'mdi-apps', link: '/software' },
 			{ text: 'Hardware', icon: 'mdi-desktop-classic', link: '/hardware' },
 			{ text: 'Order', icon: 'mdi-cart-outline', link: '/order' },
+			{ text: 'Groups', icon: 'mdi-account-group-outline', link: '/groups' },
 			{ text: 'Users', icon: 'mdi-account-outline', link: '/users' },
 		],
 		loginState: false,

@@ -11,6 +11,7 @@ import UserEdit from '../views/User/Edit.vue';
 import Barcode from '../views/Barcode.vue'
 import SignIn from '../views/SignIn.vue';
 import store from '../store'
+import Profile from '../views/Profile.vue';
 
 Vue.use(VueRouter);
 
@@ -86,6 +87,11 @@ const routes = [
 		path: '/signin',
 		name: 'SignIn',
 		component: SignIn
+	},
+	{
+		path: '/profile/:id',
+		name: 'Profile',
+		component: Profile
 	}
 ];
 
